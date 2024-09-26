@@ -1,19 +1,36 @@
 // Calculator functions
 
-let number1;
-let number2;
+// Variables to update display
+let num1;
+let num2;
 let operator;
 
-// Addition
+
+function add(num1, num2)
+{
+    return num1 + num2;
+}
 
 
-// Subtraction
+function subtract(num1, num2)
+{
+    return num1 - num2;
+}
 
 
-// Division
+function divide(num1, num2)
+{
+    return num1 / num2;
+}
 
 
-// Multiplication
+function multiply(num1, num2)
+{
+    return num1 * num2;
+}
 
 
-// Operate function takes an operator, 2 numbers, and calls one of the functions above
+function operate(operator, num1, num2)
+{
+    return operator(num1, num2);
+}
