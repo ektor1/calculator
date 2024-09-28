@@ -4,41 +4,68 @@
 
 
 body {
-    font-size: 14px;
     color: rgb(223, 221, 221);
-    background-color: black;
+    background-color: rgb(3, 3, 28);
 }
 
 
-.main-container {
+#calculator {
     width: 350px;
     height: 500px;
-    border-radius: 5px;
-    display: grid;  
+    display: grid;
     border: solid white;
     margin: auto;
     grid-template-rows: 1fr 4fr;
+    border-radius: 10px;
+    background-color: brown;
 }
 
 
-.screen {
+#display {
     margin: 20px;
     width: 310px;
     height: 100px;
     border: solid white;
+    color: white;
+    background-color: rgb(101, 179, 186);
+    display: grid;
+    grid-template-rows: 1fr 2fr;
+    text-align: right;
+}
+
+#lowerDisplay {
+    padding: 5px;
+    font-size: 30px;
+}
+
+#upperDisplay {
+    font-size: 16px;
 }
 
 
-.buttons {
+#buttons {
     display: grid;
     margin: 20px;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 5px;
 }
 
-
-.buttons > button {
-    border: 0;
+button {
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
     border-radius: 5px;
+    font-size: 18px;
 }
 
+button:hover {
+    background-color: hsl(0, 0%, 40%);
+}
+
+button:active {
+    background-color: hsl(0, 0%, 60%);;
+}
+
+.operator-btn {
+    background-color: orange;
+}
