@@ -31,15 +31,17 @@ body {
     display: grid;
     grid-template-rows: 1fr 2fr;
     text-align: right;
+    overflow: hidden;
+}
+
+#upperDisplay {
+    padding: 5px;
+    font-size: 16px;
 }
 
 #lowerDisplay {
     padding: 5px;
     font-size: 30px;
-}
-
-#upperDisplay {
-    font-size: 16px;
 }
 
 
