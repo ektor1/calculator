@@ -11,11 +11,12 @@ let map = {};
 map['+'] = add;
 map['-'] = subtract;
 map['x'] = multiply;
-map['/'] = divide;
+map['÷'] = divide;
 
 
 // Create variables for calculation
 let firstNumber, operator, secondNumber, round = 0;
+let decimalNum = 0;
 let upperDisplayArr = [];
 const upperDisplayText = document.getElementById("upperDisplay");
 const lowerDisplayText = document.getElementById("lowerDisplay");
@@ -31,11 +32,20 @@ function appendDigit(input)
 // Append first number and operation selected to the upper display
 function appendOperator(operatorInput)
 {
-    firstNumber = lowerDisplayText.innerText;
-    upperDisplayArr.push(firstNumber, operatorInput);
-    operator = upperDisplayArr[1];
-    upperDisplayText.innerText = firstNumber + " " + operator;
-    lowerDisplayText.innerText = "";
+    if (operator == null)
+    {
+        decimalNum = 0; // reset decimal variable
+        firstNumber = lowerDisplayText.innerText;
+        upperDisplayArr.push(firstNumber, operatorInput);
+        operator = upperDisplayArr[1];
+        lowerDisplayText.innerText = "";
+    } else if (operator && operator != operatorInput)
+    {
+        operator = operatorInput;
+        upperDisplayArr.splice(1, 1, operator);
+    }
+
+    upperDisplayText.innerText = upperDisplayArr[0] + " " + upperDisplayArr[1];
 }
 
 
@@ -47,7 +57,6 @@ function equals()
         secondNumber = lowerDisplayText.innerText;
         upperDisplayArr.push(secondNumber);
         upperDisplayText.innerText += " " + secondNumber;
-
         lowerDisplayText.innerText = calculate(map[operator], firstNumber, secondNumber);
         round += 1;
     } else 
@@ -69,6 +78,7 @@ function clearDisplay()
     operator = undefined;
     secondNumber = undefined;
     round = 0;
+    upperDisplayArr = [];
 }
 
 
@@ -81,4 +91,16 @@ function switchPercentage()
 function switchSign()
 {
     lowerDisplayText.innerText = (-lowerDisplayText.innerText).toString();
+}
+
+function appendDecimal(input)
+{ 
+    if (decimalNum == 0)
+    {
+        decimalNum += 1;
+        lowerDisplayText.innerText += input;
+    } else
+    {
+        lowerDisplayText.innerText = lowerDisplayText.innerText;
+    }
 }

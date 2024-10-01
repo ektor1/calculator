@@ -17,7 +17,6 @@ body {
     width: 350px;
     height: 500px;
     display: grid;
-    border: solid white;
     grid-template-rows: 1fr 4fr;
     border-radius: 10px;
     background-color: brown;
@@ -62,12 +61,8 @@ button {
     font-size: 18px;
 }
 
-button:hover {
-    background-color: hsl(0, 0%, 40%);
-}
-
 button:active {
-    background-color: hsl(0, 0%, 60%);;
+    background-color: hsl(0, 0%, 60%);
 }
 
 .operator-btn {
