@@ -15,8 +15,8 @@ map['/'] = divide;
 
 
 // Create variables for calculation
-let firstNumber, secondNumber, round;
-let operator;
+let firstNumber, operator, secondNumber, round = 0;
+let upperDisplayArr = [];
 const upperDisplayText = document.getElementById("upperDisplay");
 const lowerDisplayText = document.getElementById("lowerDisplay");
 
@@ -32,8 +32,9 @@ function appendDigit(input)
 function appendOperator(operatorInput)
 {
     firstNumber = lowerDisplayText.innerText;
-    operator = operatorInput;
-    upperDisplayText.innerText = lowerDisplayText.innerText + " " + operator;
+    upperDisplayArr.push(firstNumber, operatorInput);
+    operator = upperDisplayArr[1];
+    upperDisplayText.innerText = firstNumber + " " + operator;
     lowerDisplayText.innerText = "";
 }
 
@@ -41,10 +42,21 @@ function appendOperator(operatorInput)
 // Append second number to the upper display and show result of calculation on the lower display
 function equals()
 {
-    secondNumber = lowerDisplayText.innerText;
-    upperDisplayText.innerText += " " + lowerDisplayText.innerText;
+    if (round == 0)
+    {
+        secondNumber = lowerDisplayText.innerText;
+        upperDisplayArr.push(secondNumber);
+        upperDisplayText.innerText += " " + secondNumber;
 
-    lowerDisplayText.innerText = calculate(map[operator], firstNumber, secondNumber);
+        lowerDisplayText.innerText = calculate(map[operator], firstNumber, secondNumber);
+        round += 1;
+    } else 
+    {
+        upperDisplayArr.splice(0, 1, lowerDisplayText.innerText); // replace first item of array with result
+        upperDisplayText.innerText = upperDisplayArr[0] + " " + upperDisplayArr[1] + " " + upperDisplayArr[2];
+        firstNumber = upperDisplayArr[0];
+        lowerDisplayText.innerText = calculate(map[operator], firstNumber, secondNumber);
+    }
     
 }
 
@@ -53,9 +65,10 @@ function clearDisplay()
 {
     upperDisplayText.innerText = "";
     lowerDisplayText.innerText = "";
-    operator = undefined;
     firstNumber = undefined;
+    operator = undefined;
     secondNumber = undefined;
+    round = 0;
 }
 
 
