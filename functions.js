@@ -3,8 +3,17 @@ let add = (firstNumber, secondNumber) => firstNumber + secondNumber;
 let subtract = (firstNumber, secondNumber) => firstNumber - secondNumber;
 let divide = (firstNumber, secondNumber) => firstNumber / secondNumber;
 let multiply = (firstNumber, secondNumber) => firstNumber * secondNumber;
-let calculate = (operator, firstNumber, secondNumber) => operator(parseFloat(firstNumber), parseFloat(secondNumber));
 
+function calculate(operator, firstNumber, secondNumber)
+{
+    if (operator==divide && secondNumber==0)
+    {
+        return "Divide by zero";
+    } else
+    {
+        return operator(parseFloat(firstNumber), parseFloat(secondNumber));
+    }
+}
 
 // Map operator signs to functions
 let map = {};
