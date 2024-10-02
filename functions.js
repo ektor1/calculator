@@ -3,7 +3,7 @@ let add = (firstNumber, secondNumber) => firstNumber + secondNumber;
 let subtract = (firstNumber, secondNumber) => firstNumber - secondNumber;
 let divide = (firstNumber, secondNumber) => firstNumber / secondNumber;
 let multiply = (firstNumber, secondNumber) => firstNumber * secondNumber;
-let calculate = (operator, firstNumber, secondNumber) => operator(parseInt(firstNumber), parseInt(secondNumber));
+let calculate = (operator, firstNumber, secondNumber) => operator(parseFloat(firstNumber), parseFloat(secondNumber));
 
 
 // Map operator signs to functions
@@ -78,6 +78,7 @@ function clearDisplay()
     operator = undefined;
     secondNumber = undefined;
     round = 0;
+    decimalNum = 0;
     upperDisplayArr = [];
 }
 
@@ -94,7 +95,7 @@ function switchSign()
 }
 
 function appendDecimal(input)
-{ 
+{
     if (decimalNum == 0)
     {
         decimalNum += 1;
